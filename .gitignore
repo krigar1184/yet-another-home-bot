@@ -1,0 +1,15 @@
+*.js
+*.js.map
+config/default.ts
+config/production.ts
+logs
+*.log
+npm-debug.log
+node_modules
+.npm
+.node_repl_history
+.idea
+*.bak
+build
+
+
