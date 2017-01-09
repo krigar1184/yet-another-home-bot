@@ -9,7 +9,7 @@ export const messages = {
         ru: () =>
             'Привет, хозяин! Надеюсь, у тебя будет хороший день. А чтобы ты не скучал, вот тебе мотивирующая цитата.',
         en: () =>
-            'Hello, Master! What a wonderful day! I have a new quote for you.',
+            'Hello, Master! What a wonderful day! I have a new quote for you.'
     }
 };
 

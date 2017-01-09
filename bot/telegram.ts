@@ -1,11 +1,12 @@
-import {IBot, IInputMessage} from './interfaces';
+import {IBot, IInputMessage, BotType} from './interfaces';
 import * as Telegram from 'node-telegram-bot-api';
+import {DefaultBot} from './default';
 // TODO: catching errors
-export class TelegramBot implements IBot {
-    private api: any;
-
+export class TelegramBot extends DefaultBot implements IBot {
     constructor(apiKey: string) {
+        super();
         this.api = new Telegram(apiKey, {polling: true});
+        this.type = BotType.TELEGRAM;
     }
 
     public listen(fn: (message: any) => void): void {
@@ -31,7 +32,7 @@ export class TelegramBot implements IBot {
     public processMessage(msg: any): IInputMessage {
         const message: IInputMessage = {
             senderId: msg.from.id,
-            text: msg.text
+            text: this.parseText(msg.text)
         };
 
         return message;

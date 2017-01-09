@@ -1,10 +1,10 @@
 import * as config from 'config';
 import {TelegramBot} from './bot/telegram';
 import * as schedule from 'node-schedule'
-import {Forismatic} from "./service/forismatic";
+import {Forismatic} from './service/forismatic';
 import {IForismaticQuote} from './service/interfaces/forismatic';
 import {IInputMessage} from './bot/interfaces';
-import {messageTypes, getMessage} from './messages';
+import {messageTypes, getMessage} from './util/messages';
 
 const telegramBot = new TelegramBot(config.get<string>('telegram.apiKey'));
 
@@ -26,3 +26,6 @@ const job = schedule.scheduleJob({hour: 9, minute: 0}, function(){
                 ` ${quote.quoteLink}`
         ))));
 });
+
+// TODO move console.log to wrapper in util
+console.log(new Date() + ' server is up, bot is up too!');

@@ -1,3 +1,8 @@
+export enum BotType {
+    DEFAULT,
+    TELEGRAM
+}
+
 export interface IInputMessage {
     senderId: string | number;
     text: string;
@@ -29,4 +34,10 @@ export interface IBot {
      * @param message
      */
     send(userId: string | number, message: string): void | Promise<IInputMessage>;
+
+    /**
+     * Returns bot type.
+     * @return {BotType}
+     */
+    getType(): BotType;
 }

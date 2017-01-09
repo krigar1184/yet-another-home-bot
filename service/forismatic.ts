@@ -13,6 +13,7 @@ export const defaultQuote: IForismaticQuote = {
     quoteLink: 'http://forismatic.com/en/33ae3b318c/'
 };
 
+// TODO use promisify lib
 function getQuote(): Promise<IForismaticQuote> {
     return new Promise((resolve: Function, reject: Function) => {
         forismaticInstance.getQuote({
