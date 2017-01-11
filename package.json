@@ -4,8 +4,8 @@
   "scripts": {
     "start": "node index.js",
     "build": "tsc",
-    "lint": "tslint '*/*.ts' --type-check --project tsconfig.json ",
-    "watch": "nodemon --ext ts --ignore /*.js --exec 'npm run lint; npm run build; npm run start;'"
+    "lint": "tslint './app/**/*.ts' --type-check --project tsconfig.json ",
+    "watch": "tsc --watch"
   },
   "author": "",
   "license": "",
@@ -21,7 +21,6 @@
     "@types/config": "0.0.31",
     "@types/node": "^6.0.58",
     "@types/node-schedule": "0.0.36",
-    "nodemon": "^1.11.0",
     "tslint-eslint-rules": "^3.2.3",
     "typescript": "^2.1.4"
   }

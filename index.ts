@@ -1,10 +1,10 @@
 import * as config from 'config';
-import {TelegramBot} from './bot/telegram';
+import {TelegramBot} from './app/bot/telegram';
 import * as schedule from 'node-schedule'
-import {Forismatic} from './service/forismatic';
-import {IForismaticQuote} from './service/interfaces/forismatic';
-import {IInputMessage} from './bot/interfaces';
-import {messageTypes, getMessage} from './util/messages';
+import {Forismatic} from './app/service/forismatic';
+import {IForismaticQuote} from './app/service/interfaces/forismatic';
+import {IInputMessage} from './app/bot/interfaces';
+import {messageTypes, getMessage} from './app/util/messages';
 
 const telegramBot = new TelegramBot(config.get<string>('telegram.apiKey'));
 
