@@ -27,13 +27,13 @@ export interface IBot {
      * @param msg
      * @param replyMessage
      */
-    reply(msg: any, replyMessage: string): void | Promise<IInputMessage>;
+    reply(msg: any, replyMessage: string): Promise<IInputMessage>;
     /**
      * Sends message to user.
      * @param userId
      * @param message
      */
-    send(userId: string | number, message: string): void | Promise<IInputMessage>;
+    send(userId: string | number, message: string): Promise<IInputMessage>;
 
     /**
      * Returns bot type.
