@@ -7,6 +7,7 @@ import {IInputMessage} from './bot/interfaces';
 import {messageTypes, getMessage} from './util/messages';
 
 const telegramBot = new TelegramBot(config.get<string>('telegram.apiKey'));
+//console.log(telegramBot);
 
 telegramBot.listen(function (msg: IInputMessage) {
     telegramBot.send(msg.senderId, getMessage(msg.text, messageTypes.WAITING));
