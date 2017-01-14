@@ -1,31 +1,17 @@
 import * as config from 'config';
-import {TelegramBot} from './bot/telegram';
+import {TelegramBot} from './app/bot/telegram';
 import * as schedule from 'node-schedule'
-import {Forismatic} from './service/forismatic';
-import {IForismaticQuote} from './service/interfaces/forismatic';
-import {IInputMessage} from './bot/interfaces';
-import {messageTypes, getMessage} from './util/messages';
+import {DefaultRouter} from './app/router/default';
+import {ForismaticAction} from './app/action/forismatic';
 
 const telegramBot = new TelegramBot(config.get<string>('telegram.apiKey'));
 //console.log(telegramBot);
 
-telegramBot.listen(function (msg: IInputMessage) {
-    telegramBot.send(msg.senderId, getMessage(msg.text, messageTypes.WAITING));
-});
+const router = new DefaultRouter(telegramBot);
+router.route('/quote', ForismaticAction.sendQuote);
 
-const job = schedule.scheduleJob({hour: 9, minute: 0}, function(){
-    const receivers = config.get<Array<number>>('telegram.receivers');
-
-    Promise.all(receivers.map((receiver: number) => telegramBot.send(
-        receiver, getMessage(null, messageTypes.QUOTE)
-    )))
-        .then(() => Forismatic.getQuote())
-        .then((quote: IForismaticQuote) => Promise.all(receivers.map((receiver: number) => telegramBot.send(
-            receiver,
-                quote.quoteText +
-                (quote.quoteAuthor.length ? ` (${quote.quoteAuthor})` : '') +
-                ` ${quote.quoteLink}`
-        ))));
+const job = schedule.scheduleJob({hour: 9, minute: 0}, function() {
+    ForismaticAction.spamQuote(telegramBot);
 });
 
 // TODO move console.log to wrapper in util
