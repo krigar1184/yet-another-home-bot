@@ -5,7 +5,6 @@ import {DefaultRouter} from './app/router/default';
 import {ForismaticAction} from './app/action/forismatic';
 
 const telegramBot = new TelegramBot(config.get<string>('telegram.apiKey'));
-//console.log(telegramBot);
 
 const router = new DefaultRouter(telegramBot);
 router.route('/quote', ForismaticAction.sendQuote);
