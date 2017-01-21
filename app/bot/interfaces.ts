@@ -3,6 +3,9 @@ export enum BotType {
     TELEGRAM
 }
 
+/**
+ * Interface for user-sent messages.
+ */
 export interface IInputMessage {
     senderId: string | number;
     text: string;
@@ -15,6 +18,7 @@ export interface IBot {
     /**
      * Processes messenger-specific message and returns common message object.
      * @param msg
+     * @return {IInputMessage}
      */
     processMessage(msg: any): IInputMessage;
     /**
@@ -26,12 +30,14 @@ export interface IBot {
      * Sends reply message to msg sender
      * @param msg
      * @param replyMessage
+     * @return {Promise<IInputMessage>
      */
     reply(msg: any, replyMessage: string): Promise<IInputMessage>;
     /**
      * Sends message to user.
      * @param userId
      * @param message
+     * @return {Promise<IInputMessage>
      */
     send(userId: string | number, message: string): Promise<IInputMessage>;
 
