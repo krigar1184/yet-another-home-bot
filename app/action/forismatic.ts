@@ -4,12 +4,18 @@ import {getMessage, messageTypes} from '../util/messages';
 import {Forismatic} from '../service/forismatic';
 import {IForismaticQuote} from '../service/interfaces/forismatic';
 
+function getFullQuoteText(quote: IForismaticQuote): string {
+    return quote.quoteText +
+        (quote.quoteAuthor.length ? ` (${quote.quoteAuthor})` : '') +
+        ` ${quote.quoteLink}`;
+}
+
 // TODO Error handling
 export class ForismaticAction {
     public static sendQuote(bot: IBot, message: IInputMessage): Promise<void> {
         return Forismatic.getQuote()
             .then((quote: IForismaticQuote) => {
-                bot.send(message.senderId, quote.quoteText);
+                bot.send(message.senderId, getFullQuoteText(quote));
             });
     }
 
@@ -23,9 +29,7 @@ export class ForismaticAction {
             .then((quote: IForismaticQuote) => {
                 Promise.all(receivers.map((receiver: number) => bot.send(
                     receiver,
-                    quote.quoteText +
-                    (quote.quoteAuthor.length ? ` (${quote.quoteAuthor})` : '') +
-                    ` ${quote.quoteLink}`
+                    getFullQuoteText(quote)
                 )));
             });
     }
