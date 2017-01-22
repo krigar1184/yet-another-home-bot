@@ -29,7 +29,8 @@ function getQuote(): Promise<IForismaticQuote> {
     });
 }
 
-export class Forismatic {
+export class ForismaticService {
+    private constructor() {}
     public static getQuote(): Promise<IForismaticQuote> {
         return getQuote()
             .then((quote: IForismaticQuote) => quote)
