@@ -9,9 +9,10 @@ const telegramBot = new TelegramBot(config.get<string>('telegram.apiKey'));
 const router = new DefaultRouter(telegramBot);
 router.route('/quote', ForismaticAction.sendQuote);
 
+// TODO move to bootstrap?
 const job = schedule.scheduleJob({hour: 9, minute: 0}, function() {
     ForismaticAction.spamQuote(telegramBot);
 });
 
-// TODO move console.log to wrapper in util
+// TODO move console.log to some kind of wrapper
 console.log(new Date() + ' server is up, bot is up too!');

@@ -21,6 +21,6 @@ export abstract class DefaultBot implements IBot {
 
     // TODO real text parsing
     protected parseText(text: string): string {
-        return text;
+        return text.trim();
     }
 }
