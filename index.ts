@@ -19,7 +19,10 @@ bootstrap(config.get<string>('databasePath'))
         router.route('/unsubscribe', SubscriptionAction.delete);
 
         // TODO move to bootstrap?
-        const job = schedule.scheduleJob({hour: 9, minute: 0}, function() {
+        const job = schedule.scheduleJob({
+            hour: config.get<string>('subscription.h'),
+            minute: config.get<string>('subscription.m')
+        }, function() {
             ForismaticAction.spamQuote(telegramBot);
         });
 

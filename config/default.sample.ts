@@ -6,5 +6,9 @@ module.exports = {
     forismatic: {
         lang: 'ru'
     },
+    subscription: {
+        h: 9,
+        m: 0
+    },
     databasePath: 'db/database.sqlite'
 };
