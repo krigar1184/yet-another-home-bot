@@ -6,6 +6,7 @@ export class TelegramBot extends DefaultBot implements IBot {
     constructor(apiKey: string) {
         super();
         this.api = new Telegram(apiKey, {polling: true});
+
         this.type = BotType.TELEGRAM;
     }
 

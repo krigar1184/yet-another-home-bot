@@ -1,3 +1,5 @@
+databasePath
+db
 *.js
 *.js.map
 config/default.ts
@@ -11,5 +13,3 @@ node_modules
 .idea
 *.bak
 build
-
-
