@@ -1,5 +1,5 @@
 import * as Sequelize from 'sequelize';
-import {init} from '../model/sequelize'
+import {init} from '../model/sequelize';
 
 export function bootstrap(databasePath: string): Promise<any> {
     return init(new Sequelize('', '', '', {

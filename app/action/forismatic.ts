@@ -2,8 +2,8 @@ import {IBot, IInputMessage} from '../bot/interfaces';
 import {getMessage, messageTypes} from '../util/messages';
 import {ForismaticService} from '../service/forismatic';
 import {IForismaticQuote} from '../service/interfaces/forismatic';
-import {SubscriptionService} from "../service/subscription";
-import {ISubscription} from "../service/interfaces/subscription";
+import {SubscriptionService} from '../service/subscription';
+import {ISubscription} from '../service/interfaces/subscription';
 
 function getFullQuoteText(quote: IForismaticQuote): string {
     return quote.quoteText +
@@ -28,7 +28,7 @@ export class ForismaticAction {
                 subscriptions = receivers;
                 return Promise.all(subscriptions.map((subscription: ISubscription) => bot.send(
                     subscription.senderId, getMessage(null, messageTypes.QUOTE)
-                )))
+                )));
             })
             .then(() => ForismaticService.getQuote())
             .then((quote: IForismaticQuote) => {

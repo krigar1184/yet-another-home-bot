@@ -8,4 +8,4 @@ export = function(sequelize: Sequelize, dataTypes: DataTypes) {
         type: {type: dataTypes.STRING, primaryKey: true},
         senderId: {type: dataTypes.STRING, primaryKey: true}
     });
-}
+};

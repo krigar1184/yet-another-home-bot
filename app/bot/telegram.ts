@@ -1,6 +1,7 @@
 import {IBot, IInputMessage, BotType} from './interfaces';
 import * as Telegram from 'node-telegram-bot-api';
 import {DefaultBot} from './default';
+
 // TODO: catching errors
 export class TelegramBot extends DefaultBot implements IBot {
     constructor(apiKey: string) {

@@ -21,11 +21,19 @@
   },
   "devDependencies": {
     "@types/config": "0.0.31",
+    "@types/jest": "^16.0.4",
     "@types/node": "^6.0.58",
     "@types/node-schedule": "0.0.36",
     "@types/sequelize": "^4.0.39",
     "@types/sqlite3": "^2.2.32",
+    "jest": "^18.1.0",
+    "jest-cli": "^18.1.0",
+    "ts-jest": "^18.0.2",
     "tslint-eslint-rules": "^3.2.3",
     "typescript": "^2.1.4"
+  },
+  "jest": {
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.js$",
+    "moduleFileExtensions": ["js", "ts"]
   }
 }
