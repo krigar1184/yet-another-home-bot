@@ -11,7 +11,11 @@ export abstract class DefaultBot implements IBot {
 
     public abstract reply(msg: IInputMessage, replyMessage: string): Promise<IInputMessage>;
 
+    public abstract replyWithPhoto(msg: IInputMessage, photo: Buffer): Promise<IInputMessage>;
+
     public abstract send(userId: string | number, message: string): Promise<IInputMessage>;
+
+    public abstract sendPhoto(userId: string | number, photo: Buffer): Promise<IInputMessage>;
 
     public abstract processMessage(msg: any): IInputMessage;
 

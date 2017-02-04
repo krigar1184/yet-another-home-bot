@@ -23,8 +23,22 @@ export class TelegramBot extends DefaultBot implements IBot {
             });
     }
 
+    public replyWithPhoto(msg: IInputMessage, photo: Buffer): Promise<IInputMessage> {
+        return this.api.sendPhoto(msg.senderId, photo)
+            .then((msg: any) => {
+                return this.processMessage(msg);
+            });
+    }
+
     public send(userId: string | number, message: string): Promise<IInputMessage> {
         return this.api.sendMessage(userId, message)
+            .then((msg: any) => {
+                return this.processMessage(msg);
+            });
+    }
+
+    public sendPhoto(userId: string | number, photo: Buffer): Promise<IInputMessage> {
+        return this.api.sendPhoto(userId, photo)
             .then((msg: any) => {
                 return this.processMessage(msg);
             });
