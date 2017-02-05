@@ -15,6 +15,7 @@
   "dependencies": {
     "config": "^1.24.0",
     "forismatic-node": "^1.1.4",
+    "node-raspistill": "github:dlukanin/node-raspistill",
     "node-schedule": "^1.2.0",
     "node-telegram-bot-api": "^0.25.0",
     "sequelize": "^3.29.0",

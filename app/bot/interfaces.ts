@@ -30,16 +30,29 @@ export interface IBot {
      * Sends reply message to msg sender
      * @param msg
      * @param replyMessage
-     * @return {Promise<IInputMessage>
+     * @return {Promise<IInputMessage>}
      */
-    reply(msg: any, replyMessage: string): Promise<IInputMessage>;
+    reply(msg: IInputMessage, replyMessage: string): Promise<IInputMessage>;
     /**
      * Sends message to user.
      * @param userId
      * @param message
-     * @return {Promise<IInputMessage>
+     * @return {Promise<IInputMessage>}
      */
     send(userId: string | number, message: string): Promise<IInputMessage>;
+
+    /**
+     * Sends photo to user.
+     * @param photo
+     * @return {Promise<IInputMessage>}
+     */
+    sendPhoto(userId: string | number, photo: Buffer): Promise<IInputMessage>;
+
+    /**
+     * Replies to user message with photo.
+     * @param photo
+     */
+    replyWithPhoto(msg: IInputMessage, photo: Buffer): Promise<IInputMessage>;
 
     /**
      * Returns bot type.

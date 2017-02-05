@@ -6,6 +6,7 @@ import {ForismaticAction} from './app/action/forismatic';
 import {SubscriptionAction} from './app/action/subscription';
 import {bootstrap} from './app/bootstrap/all';
 import {DefaultAction} from "./app/action/default";
+import {RaspiphotoAction} from "./app/action/raspiphoto";
 
 const telegramBot = new TelegramBot(config.get<string>('telegram.apiKey'));
 
@@ -17,6 +18,7 @@ bootstrap(config.get<string>('databasePath'))
         router.route('/quote', ForismaticAction.sendQuote);
         router.route('/subscribe', SubscriptionAction.create);
         router.route('/unsubscribe', SubscriptionAction.delete);
+        router.route('/photo', RaspiphotoAction.takePhoto);
 
         // TODO move to bootstrap?
         const job = schedule.scheduleJob({

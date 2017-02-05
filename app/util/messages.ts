@@ -35,6 +35,18 @@ export const messages = {
             'Ты уже меня не читаешь, хозяин. Нет нужды еще раз отписываться.',
         en: () =>
             'Hey, you r trying to unsubscribe again. But you have already been unsubscribed. :('
+    },
+    WAIT_FOR_PHOTO: {
+        ru: () =>
+            'Так, сейчас напрягусь и попробую сделать фото, подожди немного.',
+        en: () =>
+            'Hm, let me try...'
+    },
+    PHOTO_ERROR: {
+        ru: () =>
+            'Хозяин, прости, но что-то случилось при попытке отправки фотографии, не могу тебе ее послать.',
+        en: () =>
+            'Sorry. But i cant send you photo right now. :('
     }
 };
 
@@ -44,9 +56,11 @@ export const getMessage = function(receivedMessageText: string, type: string, lo
 
 export const messageTypes = {
     WAITING: 'WAITING',
+    WAIT_FOR_PHOTO: 'WAIT_FOR_PHOTO',
     QUOTE: 'QUOTE',
     SUBSCRIPTION_EXISTS: 'SUBSCRIPTION_EXISTS',
     SUBSCRIPTION_SUCCESS: 'SUBSCRIPTION_SUCCESS',
     SUBSCRIPTION_DELETED: 'SUBSCRIPTION_DELETED',
     SUBSCRIPTION_ALREADY_DELETED: 'SUBSCRIPTION_ALREADY_DELETED',
+    PHOTO_ERROR: 'PHOTO_ERROR'
 };

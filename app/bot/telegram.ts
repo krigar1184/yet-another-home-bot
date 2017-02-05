@@ -24,8 +24,22 @@ export class TelegramBot extends DefaultBot implements IBot {
             });
     }
 
+    public replyWithPhoto(msg: IInputMessage, photo: Buffer): Promise<IInputMessage> {
+        return this.api.sendPhoto(msg.senderId, photo)
+            .then((msg: any) => {
+                return this.processMessage(msg);
+            });
+    }
+
     public send(userId: string | number, message: string): Promise<IInputMessage> {
         return this.api.sendMessage(userId, message)
+            .then((msg: any) => {
+                return this.processMessage(msg);
+            });
+    }
+
+    public sendPhoto(userId: string | number, photo: Buffer): Promise<IInputMessage> {
+        return this.api.sendPhoto(userId, photo)
             .then((msg: any) => {
                 return this.processMessage(msg);
             });
@@ -34,7 +48,7 @@ export class TelegramBot extends DefaultBot implements IBot {
     public processMessage(msg: any): IInputMessage {
         const message: IInputMessage = {
             senderId: msg.from.id,
-            text: this.parseText(msg.text)
+            text: msg.text ? this.parseText(msg.text) : ''
         };
 
         return message;
