@@ -47,7 +47,7 @@ export class TelegramBot extends DefaultBot implements IBot {
     public processMessage(msg: any): IInputMessage {
         const message: IInputMessage = {
             senderId: msg.from.id,
-            text: this.parseText(msg.text)
+            text: msg.text ? this.parseText(msg.text) : ''
         };
 
         return message;
